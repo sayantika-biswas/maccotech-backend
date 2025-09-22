@@ -1,7 +1,7 @@
 const express = require('express');
 const sendOTPEmail = require('../../utils/email')
 const User = require('../../models/User/User')
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
 const router = express.Router();

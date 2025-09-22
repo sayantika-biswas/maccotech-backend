@@ -39,7 +39,7 @@ app.get('/data', (req, res) => {
 
 app.use(bodyParser.json());
 app.use(cors(({
-    origin: "http://localhost:3000",  
+    origin: ["http://localhost:3000", "https://maccofrontend-say.vercel.app"],
     credentials: true,
     optionsSuccessStatus: 200,
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],

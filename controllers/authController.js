@@ -26,7 +26,7 @@ exports.register = async (req, res) => {
     // Upload profile picture to S3 if present
     const profilePictureUrl = req.file ? req.file.location : '';
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User({ firstName, lastName, email, phone, password: hashedPassword, acceptTerms, profilePicture: profilePictureUrl });
     await user.save();
@@ -44,7 +44,7 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: 'Invalid credentials' });
 
-    const isMatch = await bcrypt.compare(password, user.password);
+  const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
 
     const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1d' });
